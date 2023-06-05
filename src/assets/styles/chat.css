@@ -1,0 +1,32 @@
+.chat{
+    width: 310px;
+    gap:15px;
+    border:3px solid rgb(54,79,142);
+    background-color:white;
+}
+.room-name{
+    background-color: rgb(54,79,142) ;
+    color:white;
+    height:100%;
+    padding:20px;
+}
+.msgform{
+    display:flex;
+    width:100%;
+    padding:5px;
+    align-items: center;
+}
+.messages{
+    font-weight:400;
+    padding:5px;
+}
+.messages span{
+    font-weight:bold;
+}
+.msginput{
+    border:none;
+    width:100%;
+}
+.msginput:focus{
+    outline:none;
+}

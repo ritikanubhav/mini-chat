@@ -1,0 +1,32 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+body{
+    background:url(../images/bg3.jpg);
+    background-repeat: repeat;
+    background-size: contain;
+}
+button{
+    width:100px;
+    height:40px;
+    border:none;
+    border-radius: 5px;
+    color:white;
+    background-color:  rgb(54,79,142);
+}
+input{
+    height:30px;
+    border:solid 2px  rgb(54,79,142);
+    border-radius: 5px;
+    padding:3px;
+}
+.container{
+        margin:5%;
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        font-weight: 600;
+}

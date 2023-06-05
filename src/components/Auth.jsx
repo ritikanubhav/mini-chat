@@ -1,6 +1,7 @@
 import {auth,provider} from '../firebase-config.jsx'
 import {signInWithPopup} from 'firebase/auth'
 import Cookie from 'universal-cookie'
+import '../assets/styles/auth.css'
 const cookie=new Cookie()
 export default function Auth(props){
 
@@ -15,7 +16,7 @@ export default function Auth(props){
         {console.log(err)}
     }
     return(
-        <div>
+        <div className='auth container'>
             <p>SIGN IN WITH GOOGLE TO CONTINUE</p>
             <button onClick={signIn}>SIGN IN</button>
         </div>
