@@ -1,6 +1,11 @@
 .room{
     width:200px;
     font-size: 24px;
+    margin:5%;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    font-weight: 600;
     gap:10px;
 }
 
