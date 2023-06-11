@@ -1,38 +1,68 @@
 .chat{
-    width: 310px;
-    margin:5%;
+    width:310px;
     display:flex;
     flex-direction:column;
     justify-content: center;
     font-weight: 600;
-    gap:15px;
     border:3px solid rgb(54,79,142);
     background-color:white;
+    background: url(../images/bg1.jpg);
+    background-size: cover;
 }
 .room-name{
+    height:auto;
     background-color: rgb(54,79,142) ;
     color:white;
-    height:100%;
     padding:20px;
 }
-.messages{
-    height:200px;
+.message-box{
+    height:275px;
     font-weight:400;
     padding:5px;
     overflow: auto;
 }
-.messages span{
+
+.single-message{
+    display:block;
+    float:left;
+    padding: 5px;
+    min-width: 51%;
+    max-width:80%;
+    margin-bottom: 5px;
+    border-radius: 18px;
+    background-color:rgb(228, 222, 222);
+    overflow-wrap: break-word;
+}
+.single-message span{
     font-weight:bold;
+    color:rgb(54,79,142);
+    font-size: 14px;
+}
+.user{
+    padding:5px;
+    display: flex;
+    gap:3px;
+    align-items: center;
+}
+.userImg{
+    height:25px;
+    border-radius:50%;
+}
+.text{
+    padding-left: 10px;
 }
 .msgform{
     display:flex;
     width:100%;
     padding:5px;
     align-items: center;
+    column-gap: 5px;
 }
 .msginput{
     border:none;
-    width:100%;
+    padding-left: 10px;
+    height:100%;
+    border-radius: 30px;
 }
 .msginput:focus{
     outline:none;

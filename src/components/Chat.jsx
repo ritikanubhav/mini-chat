@@ -28,18 +28,24 @@ export default function(props){
             text : newMessage,
             createdAt: serverTimestamp(),
             user: auth.currentUser.displayName,
+            imageUrl: auth.currentUser.photoURL,
             room:props.room,
         })
         setNewMessage("")
     }
     return(
-        <div className="chat container">
+        <div className="chat">
             <div className="room-name"><h1 >WELCOME TO: {props.room.toUpperCase()}</h1></div>
-            <div className="messages">
+            <div className="message-box">
                 {messages.map( (message) => (
-                    <div>
-                        <span className="user">{message.user}: </span>
-                        { message.text }
+                    <div className="single-message">
+                        <div className="user">
+                            <img className="userImg" src={message.imageUrl}/>
+                            <span className="username">~ {message.user}</span>
+                        </div>
+                        <div className="text">
+                            { message.text }
+                        </div>
                     </div>)
                 )}
             </div>

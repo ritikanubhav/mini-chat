@@ -2,9 +2,11 @@
     width:200px;
     font-size: 24px;
     margin:5%;
+    margin-top: -15vh;
     display:flex;
     flex-direction:column;
     justify-content: center;
+    align-items: center;
     font-weight: 600;
     gap:10px;
 }

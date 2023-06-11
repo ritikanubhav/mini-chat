@@ -8,7 +8,7 @@ export default function Auth(props){
     async function signIn(){
         try{
         const result= await signInWithPopup(auth,provider)
-        console.log(result);
+        console.log(result.user);
         cookie.set('auth-token',result.user.refreshToken)
         props.setIsAuth(true)
         }
@@ -16,7 +16,7 @@ export default function Auth(props){
         {console.log(err)}
     }
     return(
-        <div className='auth container'>
+        <div className='auth'>
             <p>SIGN IN WITH GOOGLE TO CONTINUE</p>
             <button onClick={signIn}>SIGN IN</button>
         </div>

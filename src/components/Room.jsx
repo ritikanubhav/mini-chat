@@ -3,10 +3,14 @@ import '../assets/styles/room.css'
 export default function(props){
     const roomInput=useRef(null)
     return(
-        <div className='room container'>
+        <form className='room' onSubmit={
+        (e)=>
+        {   e.preventDefault();
+            props.setRoom(roomInput.current.value);
+        }}>
             <label htmlFor="room">Type room name:</label>
             <input id="room" type="text" ref={roomInput} placeholder="Room Name"/>
-            <button className='roombtn' onClick={()=>{props.setRoom(roomInput.current.value)}}>Enter Chat</button>
-        </div>
+            <button className='roombtn' type='submit'>Enter Chat</button>
+        </form>
     )
 }

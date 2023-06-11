@@ -1,6 +1,19 @@
 .app{
-    width:100%;
     display:flex;
     flex-direction:column;
     align-items:center;
+}
+
+.main{
+    width:100vw;
+    height:85vh;
+    background:url(../images/bg1.jpg);
+    background-repeat: repeat;
+    background-size: contain;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:15px;
+    padding-top:10px;
 }

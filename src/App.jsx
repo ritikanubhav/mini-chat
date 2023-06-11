@@ -25,27 +25,30 @@ export default function App() {
     return (
       <div className='app'>
         <Navbar/>
-        <Auth 
-          setIsAuth={setIsAuth}
-        />
+        <div className='main'>
+          <Auth 
+            setIsAuth={setIsAuth}
+          />
+        </div>
       </div>
     )
   }
   return(
     <div className='app'>
-    <Navbar/>
-    {
-      room ?
-        <Chat 
-          room={room}
-        />
-      :
-      <Room 
-        setRoom={setRoom}
-      />
-    }
-
-    <button onClick={signOutUser}>SIGN OUT</button>
+      <Navbar/>
+      <div className='main'>
+        {
+          room ?
+            <Chat 
+              room={room}
+            />
+          :
+          <Room 
+            setRoom={setRoom}
+          />
+        }
+        <button onClick={signOutUser}>SIGN OUT</button>
+      </div>
     </div>
   )
 }
