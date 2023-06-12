@@ -10,12 +10,15 @@ button{
     border:none;
     border-radius: 5px;
     color:white;
-    background-color:  rgb(54,79,142);
+    background-color: rgb(82, 109, 130);
 }
 input{
     height:30px;
-    border:solid 2px  rgb(54,79,142);
+    border:solid 2px #2E8A99;
     border-radius: 5px;
     padding:3px;
     width:100%;
+}
+input:focus{
+    outline: none;
 }

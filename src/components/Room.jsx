@@ -9,7 +9,7 @@ export default function(props){
             props.setRoom(roomInput.current.value);
         }}>
             <label htmlFor="room">Type room name:</label>
-            <input id="room" type="text" ref={roomInput} placeholder="Room Name"/>
+            <input id="room" autoFocus type="text" ref={roomInput} placeholder="Room Name"/>
             <button className='roombtn' type='submit'>Enter Chat</button>
         </form>
     )

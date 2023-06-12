@@ -1,25 +1,42 @@
+.chat-container{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: flex-end;
+}
 .chat{
-    width:310px;
+    width:60vw;
+    height:100%;
     display:flex;
     flex-direction:column;
-    justify-content: center;
-    font-weight: 600;
-    border:3px solid rgb(54,79,142);
+    justify-content: flex-end;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     background-color:white;
-    background: url(../images/bg1.jpg);
+    background: transparent;
     background-size: cover;
 }
 .room-name{
-    height:auto;
-    background-color: rgb(54,79,142) ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:10%;
+    background-color:#526D82;
     color:white;
-    padding:20px;
+    padding:5px;
+    font-size: 12px;
 }
 .message-box{
-    height:275px;
+    height:85%;
     font-weight:400;
     padding:5px;
     overflow: auto;
+}
+#scroller *{
+    overflow-anchor: none;
+}
+#anchor {
+    overflow-anchor: auto;
+    height: 1px;
 }
 
 .single-message{
@@ -30,7 +47,8 @@
     max-width:80%;
     margin-bottom: 5px;
     border-radius: 18px;
-    background-color:rgb(228, 222, 222);
+    background-color:#DDE6ED;
+    /* background-color:rgb(228, 222, 222); */
     overflow-wrap: break-word;
 }
 .single-message span{
@@ -49,21 +67,29 @@
     border-radius:50%;
 }
 .text{
-    padding-left: 10px;
+    padding:2px 0;
+    padding-left: 30px;
+    padding-right:10px;
 }
 .msgform{
     display:flex;
     width:100%;
+    height:15%;
     padding:5px;
+    padding-bottom: 10px;
     align-items: center;
     column-gap: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .msginput{
     border:none;
     padding-left: 10px;
-    height:100%;
+    height:70%;
     border-radius: 30px;
+    background: #DDE6ED;
 }
-.msginput:focus{
-    outline:none;
-}
+@media only screen and (max-width: 500px) {
+    .chat{
+        width: 100vw;
+    }
+  }

@@ -24,7 +24,10 @@ export default function App() {
   {
     return (
       <div className='app'>
-        <Navbar/>
+        <Navbar
+          isAuth={isAuth}
+          signOutUser={signOutUser}
+        />
         <div className='main'>
           <Auth 
             setIsAuth={setIsAuth}
@@ -35,7 +38,10 @@ export default function App() {
   }
   return(
     <div className='app'>
-      <Navbar/>
+      <Navbar
+        isAuth={isAuth}
+        signOutUser={signOutUser}
+      />
       <div className='main'>
         {
           room ?
@@ -47,7 +53,6 @@ export default function App() {
             setRoom={setRoom}
           />
         }
-        <button onClick={signOutUser}>SIGN OUT</button>
       </div>
     </div>
   )
