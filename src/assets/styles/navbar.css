@@ -1,5 +1,5 @@
 .navbar{
-    width:100%;
+    width:100vw;
     height:15vh;
     padding:2%;
     background-color: rgb(39, 55, 77);
@@ -10,8 +10,6 @@
     justify-content: space-between;
 }
 @media only screen and (max-width: 500px) {
-    .navbar{
-        display: none;
-    } 
+    
     
   }

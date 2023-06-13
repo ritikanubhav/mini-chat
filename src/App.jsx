@@ -29,7 +29,7 @@ export default function App() {
           signOutUser={signOutUser}
           room={room}
         />
-        <div className='main'>
+        <div className='main mainWithNavbar'>
           <Auth 
             setIsAuth={setIsAuth}
           />
@@ -37,6 +37,7 @@ export default function App() {
       </div>
     )
   }
+  
   return(
     <div className='app'>
       <Navbar
@@ -44,19 +45,23 @@ export default function App() {
         signOutUser={signOutUser}
         room={room}
       />
-      <div className='main'>
-        {
-          room ?
-            <Chat 
-              room={room}
-              isAuth={isAuth}
-            />
-          :
+      {
+        room ?
+        <div className='main mainWithoutNavbar'>
+          <Chat 
+            room={room}
+            isAuth={isAuth}
+            signOutUser={signOutUser}
+            setRoom={setRoom}
+          />
+        </div> 
+        :
+        <div className='main mainWithNavbar'>
           <Room 
             setRoom={setRoom}
           />
-        }
-      </div>
+        </div>
+      }
     </div>
   )
 }
