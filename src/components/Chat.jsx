@@ -1,3 +1,4 @@
+import Signout from './Signout.jsx'
 import { useState,useEffect } from "react";
 import {db,auth} from '../firebase-config.jsx' 
 import {addDoc,collection,serverTimestamp,query,onSnapshot,where, orderBy} from 'firebase/firestore'
@@ -39,7 +40,12 @@ export default function(props){
     return(
         <div className="chat-container">
             <div className="chat">
-                <div className="room-name"><h1 >WELCOME TO {props.room.toUpperCase()}</h1></div>
+                <div className="room-name">
+                    <h1 >WELCOME TO {props.room.toUpperCase()}</h1>
+                    <Signout
+                        isAuth={props.isAuth}
+                    />
+                </div>
                 <div id='scroller' className="message-box">
                     {messages.map( (message) => (
                         <div className="single-message" 

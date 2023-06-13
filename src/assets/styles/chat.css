@@ -18,11 +18,11 @@
 .room-name{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     height:10%;
     background-color:#526D82;
     color:white;
-    padding:5px;
+    padding:15px;
     font-size: 12px;
 }
 .message-box{
@@ -91,5 +91,6 @@
 @media only screen and (max-width: 500px) {
     .chat{
         width: 100vw;
-    }
+        height: 100vh;
+    } 
   }

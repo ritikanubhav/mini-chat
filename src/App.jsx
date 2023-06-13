@@ -27,6 +27,7 @@ export default function App() {
         <Navbar
           isAuth={isAuth}
           signOutUser={signOutUser}
+          room={room}
         />
         <div className='main'>
           <Auth 
@@ -41,12 +42,14 @@ export default function App() {
       <Navbar
         isAuth={isAuth}
         signOutUser={signOutUser}
+        room={room}
       />
       <div className='main'>
         {
           room ?
             <Chat 
               room={room}
+              isAuth={isAuth}
             />
           :
           <Room 
