@@ -1,6 +1,6 @@
 .chat-container{
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display:flex;
     justify-content: flex-end;
 }
@@ -19,8 +19,30 @@
 .chat-rooms{
     width:40vw;
 }
+
+.rooms-container{
+    height:90%;
+    font-weight:400;
+    overflow-x: auto;
+    background-color: rgba(221, 230, 237,0.5);
+}
+.single-room{
+    height:12vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px;
+    background:#DDE6ED;
+    border-bottom:solid 1px white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.room-info{
+    display: flex;
+    align-items: center;
+    gap:20px;
+}
 .profileImg{
-    height:100%;
+    height:110%;
     border-radius: 50%;
 }
 .chat-header{
@@ -34,10 +56,16 @@
     padding:15px;
     font-size: 12px;
 }
+.chat-header-left{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap:25px;
+}
 .message-box{
     height:85%;
     font-weight:400;
-    padding:5px;
+    padding:25px;
     overflow: auto;
 }
 
@@ -47,7 +75,7 @@
     padding: 5px;
     min-width: 51%;
     max-width:80%;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     border-radius: 18px;
     background-color:#DDE6ED;
     /* background-color:rgb(228, 222, 222); */
@@ -91,9 +119,20 @@
     /* #C2DEDC; */
      
 }
-@media only screen and (max-width: 800px) {
+
+.arrow{
+    display:none;
+}
+@media only screen and (max-width: 750px) {
     .chat{
         width: 100vw;
         height: 100vh;
     } 
+    .chat-rooms{
+        width: 0vw;
+        height: 100vh;
+    }
+    .arrow{
+        display:inline;
+    }
   }

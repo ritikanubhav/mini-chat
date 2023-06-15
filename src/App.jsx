@@ -1,5 +1,5 @@
 import React from 'react'
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import Auth from './components/Auth.jsx'
 import Room from './components/Room.jsx'
 import Navbar from './components/Navbar.jsx'
@@ -12,6 +12,7 @@ const cookie= new Cookie()
 export default function App() {
   const [isAuth,setIsAuth]=useState(cookie.get('auth-token'))
   const [room,setRoom]=useState(null)
+  const [myRooms,setMyRooms]=useState([])
 
   async function signOutUser(){
     await signOut(auth);
@@ -19,7 +20,7 @@ export default function App() {
     setIsAuth(false)
     setRoom(null)
   }
-
+  console.log("this is room",room)
   if(!isAuth)
   {
     return (
@@ -53,12 +54,17 @@ export default function App() {
             isAuth={isAuth}
             signOutUser={signOutUser}
             setRoom={setRoom}
+            myRooms={myRooms}
+            setMyRooms={setMyRooms}
           />
         </div> 
         :
         <div className='main mainWithNavbar'>
           <Room 
+            room={room}
             setRoom={setRoom}
+            myRooms={myRooms}
+            setMyRooms={setMyRooms}
           />
         </div>
       }
