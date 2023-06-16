@@ -1,6 +1,7 @@
 import {auth,provider} from '../firebase-config.jsx'
 import {signInWithPopup} from 'firebase/auth'
 import Cookie from 'universal-cookie'
+import { FcGoogle} from "react-icons/fc";
 import '../assets/styles/auth.css'
 const cookie=new Cookie()
 export default function Auth(props){
@@ -17,8 +18,7 @@ export default function Auth(props){
     }
     return(
         <div className='auth'>
-            <p>SIGN IN WITH GOOGLE TO CONTINUE</p>
-            <button onClick={signIn}>SIGN IN</button>
+            <button className="signIn" onClick={signIn}><FcGoogle style={{fontSize:"25px"}}/> SIGN IN WITH GOOGLE</button>
         </div>
     )
 }

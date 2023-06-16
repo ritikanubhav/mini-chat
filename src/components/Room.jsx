@@ -36,23 +36,8 @@ export default function(props){
         })
     },[])
     
-    // it contain names of all rooms created as admin by you-->
-
-    // useEffect(()=>{
-    //     console.log("roomnames is upadating")
-    //     if(myRooms.length>0)
-    //     {
-    //         roomNames.current=myRooms.map(room =>{
-    //             return room.roomName;})
-    //         console.log(myRooms,roomNames)
-    //     }
-    //     else
-    //             console.log("myrooms is empty",myRooms.length)
-    // },[myRooms])
+    // console.log("outside useEffect",myRooms,roomNames.current)  
     
-    console.log("outside useEffect",myRooms,roomNames.current)  
-    
-
     async function newRoomHandler(e){
         e.preventDefault();
         const roomValue=roomInput.current.value
@@ -78,9 +63,10 @@ export default function(props){
     }
     return(
         <form className='room' onSubmit={newRoomHandler}>
-            <label htmlFor="room">Type room name:</label>
+            <label htmlFor="room">Enter Room Name:</label>
             <input id="room" autoFocus type="text" ref={roomInput} placeholder="Room Name"/>
             <button className='roombtn' type='submit'>Enter Chat</button>
+            <p className="disclaimer">NOTE: If room exists you will enter the chat, else a new room will be created.</p>
         </form>
     )
 }
