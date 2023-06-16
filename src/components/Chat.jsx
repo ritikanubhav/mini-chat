@@ -51,13 +51,13 @@ export default function(props){
     }
     const chat=document.querySelector('#chat');
     const chatRooms=document.querySelector('#chat-rooms');
-    const arrowElement=document.querySelector("#arrow")
     
     function arrowClickHandler()
     {
         console.log("clicked")
         chat.style.display="none";
-        chatRooms.style.width="100vw"   
+        chatRooms.style.display="block";
+        chatRooms.style.width="100%"   
     }
 
     return(
@@ -79,9 +79,9 @@ export default function(props){
                                     chat.style.display="flex";
                                     console.log("chat reset")
                                 }
-                                if(chatRooms.style.width==="100vw")
+                                if(chatRooms.style.width==="100%")
                                 {
-                                    chatRooms.style.width="0vw"
+                                    chatRooms.style.display="none"
                                     console.log("chatRooms reset")
                                 }   
                             }}>

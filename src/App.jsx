@@ -15,6 +15,7 @@ export default function App() {
   const [myRooms,setMyRooms]=useState([])
 
   async function signOutUser(){
+    console.log('Signing out user')
     await signOut(auth);
     cookie.remove('auth-token')
     setIsAuth(false)

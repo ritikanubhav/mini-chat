@@ -6,7 +6,7 @@ export default function Navbar(props){
         <div className="navbar" style={props.room && {display:"none"}}>
             <h1>ChatBucks</h1>
             {
-                !props.room && <Signout isAuth={props.isAuth}/>
+                !props.room && <Signout isAuth={props.isAuth} signOutUser={props.signOutUser}/>
             }
         </div>
     )
