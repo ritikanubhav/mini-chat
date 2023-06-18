@@ -22,7 +22,7 @@
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-@media only screen and (max-width: 750px){
+@media only screen and (max-width: 495px){
     .signIn{
         font-size: 15px;
     }

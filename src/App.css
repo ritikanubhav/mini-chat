@@ -21,10 +21,3 @@
 .mainWithNavbar{
     height:85vh;
 }
-/* @media only screen and (max-width:750px){
-    .mainWithoutNavbar{
-        height:90vh;
-        align-items: flex-start;
-    }
-    
-} */
