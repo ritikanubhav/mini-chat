@@ -101,6 +101,11 @@
     padding-left: 30px;
     padding-right:10px;
 }
+.msg_time{
+    color:rgb(54,79,142);
+    font-size: 11px;
+    padding-right:10px;
+}
 .msgform{
     display:flex;
     width:100%;
