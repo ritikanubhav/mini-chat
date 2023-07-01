@@ -42,9 +42,10 @@ export default function(props){
         e.preventDefault();
         const roomValue=roomInput.current.value
         // console.log(myRooms,roomNames)
-        if(roomValue === null||roomValue.match(/^ /)) //matching with word starting with space
+         //matching with word starting with whiespace char or end with
+        if(roomValue === null||roomValue.match(/(^\s)|(\s$)/)) 
         {
-            alert("Empty value or a space character in beginning, Please Enter something valid.");
+            alert("Empty value or a whitespace character in beginning or end, Please Enter something valid.");
             return;
         }
         if(roomNames.current.includes(roomValue)) {
