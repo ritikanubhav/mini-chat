@@ -115,7 +115,11 @@ export default function(props){
                 <div id='scroller' className="message-box">
                     {messages.map( (message) => (
                         <div className="single-message" 
-                            style={message.uid===auth.currentUser.uid ?{float:"right"}:{float:"left",background:'#C2DEDC'}}>
+
+                            style={message.uid===auth.currentUser.uid ?
+                                {marginLeft:"auto",borderBottomRightRadius:"0px"}
+                                :{marginRight:"auto",background:'#C2DEDC',borderBottomLeftRadius:"0px"}}>
+
                             <div className="user">
                                 <img className="userImg" src={message.imageUrl}/>
                                 <span className="username">~ {message.user}</span>

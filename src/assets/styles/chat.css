@@ -63,6 +63,8 @@
     gap:25px;
 }
 .message-box{
+    display:flex;
+    flex-direction: column;
     height:85%;
     font-weight:400;
     padding:25px;
@@ -70,11 +72,9 @@
 }
 
 .single-message{
-    display:block;
-    float:left;
     padding: 5px;
-    min-width: 51%;
-    max-width:80%;
+    align-self: flex-start;
+    max-width:60%;
     margin-bottom: 10px;
     border-radius: 18px;
     background-color:#DDE6ED;
