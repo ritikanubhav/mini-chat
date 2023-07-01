@@ -3,6 +3,7 @@ import { useState,useEffect } from "react";
 import {db,auth} from '../firebase-config.jsx' 
 import {addDoc,collection,serverTimestamp,query,onSnapshot,where, orderBy} from 'firebase/firestore'
 import { BsArrowLeft,BsPeopleFill } from "react-icons/bs";
+import { MdSend } from "react-icons/md";
 import '../assets/styles/chat.css'
 export default function(props){
     const {room,myRooms}=props
@@ -139,7 +140,10 @@ export default function(props){
                         value={newMessage}
                         className="msginput"
                     />
-                    <button type='submit'>Send</button>
+                    <button type='submit'><MdSend style={{
+                        height:"30px",
+                        width:"20px"}}/>
+                    </button>
                 </form>
             </div>
         </div>
