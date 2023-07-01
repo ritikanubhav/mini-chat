@@ -123,9 +123,9 @@ export default function(props){
                             <div className="text">
                                 { message.text }
                             </div>
-                            <div className="msg_time" style={{float:"right"}}>
+                            {/* <div className="msg_time" style={{float:"right"}}>
                             {message.createdAt.toDate().toString().split(" ")[4]}
-                            </div>
+                            </div> */}
                         </div>)
                     )}
                 </div>

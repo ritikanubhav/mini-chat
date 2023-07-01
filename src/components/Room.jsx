@@ -42,7 +42,11 @@ export default function(props){
         e.preventDefault();
         const roomValue=roomInput.current.value
         // console.log(myRooms,roomNames)
-        if(roomValue === null)return
+        if(roomValue === null||roomValue === ""||roomValue === " ")
+        {
+            alert("Empty value or  a space character, Please Enter something valid.");
+            return;
+        }
         if(roomNames.current.includes(roomValue)) {
             console.log("Room already exists")
             // alert("Room already exists.Please enter another room or you can join this room")
