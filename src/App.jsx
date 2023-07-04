@@ -1,13 +1,14 @@
 import React from 'react'
 import {useState,useEffect} from 'react'
 import Auth from './components/Auth.jsx'
-import Room from './components/Room.jsx'
+import Room from './components/NewRoom.jsx'
 import Navbar from './components/Navbar.jsx'
 import Chat from './components/Chat.jsx'
 import Cookie from 'universal-cookie'
 import {auth} from './firebase-config.jsx'
 import { signOut } from 'firebase/auth'
 import './App.css'
+import NewRoom from './components/NewRoom.jsx'
 const cookie= new Cookie()
 export default function App() {
   const [isAuth,setIsAuth]=useState(cookie.get('auth-token'))
@@ -61,7 +62,7 @@ export default function App() {
         </div> 
         :
         <div className='main mainWithNavbar'>
-          <Room 
+          <NewRoom 
             room={room}
             setRoom={setRoom}
             myRooms={myRooms}

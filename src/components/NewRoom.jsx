@@ -1,7 +1,7 @@
 import { useRef,useEffect } from "react";
 import {db,auth} from '../firebase-config.jsx' 
 import {addDoc,collection,serverTimestamp,query,onSnapshot,where, orderBy} from 'firebase/firestore'
-import '../assets/styles/room.css'
+import '../assets/styles/NewRoom.css'
 export default function(props){
     const {setRoom,myRooms,setMyRooms}=props
     const roomInput=useRef(null)
