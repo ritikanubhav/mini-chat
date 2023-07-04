@@ -42,7 +42,7 @@ export default function(props){
         e.preventDefault();
         const roomValue=roomInput.current.value
         // console.log(myRooms,roomNames)
-         //matching with word starting with whiespace char or end with
+        //matching with word starting with whiespace char or end with
         if(roomValue === null||roomValue.match(/(^\s)|(\s$)/)) 
         {
             alert("Empty value or a whitespace character in beginning or end, Please Enter something valid.");
@@ -71,7 +71,7 @@ export default function(props){
             <label htmlFor="room">Enter Room Name:</label>
             <input id="room" autoFocus type="text" ref={roomInput} placeholder="Room Name"/>
             <button className='roombtn' type='submit'>Enter Chat</button>
-            <p className="disclaimer">NOTE: If room exists you will enter the chat, else a new room will be created.</p>
+            <p className="disclaimer">NOTE: If room exists you will enter the chat of that room else a new room will be created.</p>
         </form>
     )
 }

@@ -1,20 +1,26 @@
+// components import
 import Signout from './Signout.jsx'
+import Myrooms from './Myrooms.jsx'
+// useState and all import
 import { useState,useEffect } from "react";
+// firebase auth db and all import
 import {db,auth} from '../firebase-config.jsx' 
 import {addDoc,collection,serverTimestamp,query,onSnapshot,where, orderBy} from 'firebase/firestore'
-import { BsArrowLeft,BsPeopleFill } from "react-icons/bs";
+// icons import
+import { BsArrowLeft} from "react-icons/bs";
 import { MdSend } from "react-icons/md";
 import '../assets/styles/chat.css'
+
 export default function(props){
-    const {room,myRooms}=props
+    
     const [newMessage,setNewMessage]=useState("")
     const [messages,setMessages]=useState([])
     const messageRef=collection(db,"messages")
     
+    //CREATING MESSAGES ARRAY FOR DISPLAYING MESSAGES IN CHAT CONTAINER -->
     useEffect(()=>{
-        const queryMessage=query(messageRef,where("room","==",room),orderBy("createdAt"))
-        // orderBy will work only if we create index in firebase/firestore console in query-builder 
-        // through the link provided ,when trying to use orderby for field different  from field in where clause
+        const queryMessage=query(messageRef,where("room","==",props.room),orderBy("createdAt"))
+        // orderBy will work only if we create index in firebase/firestore console in query-builder for other than room in where
         const unsubscribe =onSnapshot(queryMessage,(snapshot)=>{
             let messages=[];
             snapshot.forEach((doc)=>{
@@ -24,16 +30,16 @@ export default function(props){
         })
         console.log("useffect run for messages",messages)
         return ()=> unsubscribe()
-    },[room,newMessage])
+    },[props.room,newMessage])
 
-    // on changing message array that is sending or receiving of message
-    // pinning scroll to bottom although deleting a message will also do the same -->
+    // PINNING SCROLL TO BOTTOM ON ANY CHANGE IN MESSAGE ARRAY
+    // that is sending or receiving of message although deleting a message will also do the same -->
     useEffect(()=>{
         const scrollElement=document.getElementById('scroller')
         scrollElement.scrollTop = scrollElement.scrollHeight;
     },[messages])
 
-
+    // MESSAGE FORM SUBMISSION AND SENDING TO DATABASE
     async function handleSubmit(e){
         e.preventDefault();
         if(newMessage === "")return
@@ -46,13 +52,13 @@ export default function(props){
             room:props.room,
         })
         setNewMessage("")
-        // pinning scrollbar to bottom on sending new message but not works on receiving if put here
-        // const scrollElement=document.getElementById('scroller')
-        // scrollElement.scrollTop = scrollElement.scrollHeight;
     }
+
+    // FOR DISPLAYING IN MOBILE DEVICES: CHAT AND MYROOMS SELCTORS-->
     const chat=document.querySelector('#chat');
     const chatRooms=document.querySelector('#chat-rooms');
-    
+
+    // GO BACK TO MY ROOMS SECTION IN MOBILE DEVICES ON CLICKING ARROW
     function arrowClickHandler()
     {
         console.log("clicked")
@@ -63,45 +69,13 @@ export default function(props){
 
     return(
         <div className="chat-container">
-            <div className="chat-rooms" id='chat-rooms'>
-                <div className="chat-header">
-                    <img className="profileImg" src={auth.currentUser.photoURL}/>
-                    <h1>MY ROOMS</h1>
-                    <button onClick={()=>{props.setRoom(null)}}>New Room</button>
-                </div>
-                <div className="rooms-container">
-                    {
-                        myRooms.map((roomValue)=>(
-                            <div className='single-room' onClick={()=>{
-                                props.setRoom(roomValue.roomName)
-                                console.log("room clicked",room)
-                                if(chat.style.display==="none")
-                                {
-                                    chat.style.display="flex";
-                                    console.log("chat reset")
-                                }
-                                if(chatRooms.style.width==="100%")
-                                {
-                                    chatRooms.style.display="none"
-                                    console.log("chatRooms reset")
-                                }   
-                            }}>
-                                <div className='room-info'>
-                                    <BsPeopleFill style={{
-                                        color:"#526D82",
-                                        height:"35px",
-                                        width:"35px",
-                                        border:"solid 2px #526D82",
-                                        borderRadius:"50%"
-                                    }}/>
-                                    <h4>{roomValue.roomName}</h4>
-                                </div>
-                    
-                            </div>
-                        ))
-                    }
-                </div>
-            </div>
+            <Myrooms 
+                room={props.room}
+                myRooms={props.myRooms}
+                setRoom={props.setRoom}
+                chat={chat}
+                chatRooms={chatRooms}
+            />
             <div className="chat" id="chat">
                 <div className="chat-header">
                     <div className="chat-header-left">
@@ -140,9 +114,10 @@ export default function(props){
                         value={newMessage}
                         className="msginput"
                     />
-                    <button type='submit'><MdSend style={{
-                        height:"30px",
-                        width:"20px"}}/>
+                    <button type='submit' style={{width:"2.6rem",height:"2.6rem"}}>
+                        <MdSend style={{
+                            height:"30px",
+                            width:"20px"}}/>
                     </button>
                 </form>
             </div>
