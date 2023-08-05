@@ -1,22 +1,21 @@
-// components import
-import Signout from './Signout.jsx'
-import Myrooms from './Myrooms.jsx'
+import React from 'react'
+import Signout from "./Signout"
+import { BsArrowLeft} from "react-icons/bs"
+import { MdSend } from "react-icons/md"
 // useState and all import
 import { useState,useEffect } from "react";
 // firebase auth db and all import
 import {db,auth} from '../firebase-config.jsx' 
 import {addDoc,collection,serverTimestamp,query,onSnapshot,where, orderBy} from 'firebase/firestore'
 // icons import
-import { BsArrowLeft} from "react-icons/bs";
-import { MdSend } from "react-icons/md";
 import '../assets/styles/chat.css'
 
-export default function(props){
-    
+export default function Chat(props){
+
     const [newMessage,setNewMessage]=useState("")
     const [messages,setMessages]=useState([])
     const messageRef=collection(db,"messages")
-    
+
     //CREATING MESSAGES ARRAY FOR DISPLAYING MESSAGES IN CHAT CONTAINER -->
     useEffect(()=>{
         const queryMessage=query(messageRef,where("room","==",props.room),orderBy("createdAt"))
@@ -61,66 +60,59 @@ export default function(props){
     // GO BACK TO MY ROOMS SECTION IN MOBILE DEVICES ON CLICKING ARROW
     function arrowClickHandler()
     {
-        console.log("clicked")
+        // console.log("clicked",chat,chatRooms)
         chat.style.display="none";
         chatRooms.style.display="block";
         chatRooms.style.width="100%"   
     }
 
     return(
-        <div className="chat-container">
-            <Myrooms 
-                room={props.room}
-                myRooms={props.myRooms}
-                setRoom={props.setRoom}
-                chat={chat}
-                chatRooms={chatRooms}
-            />
-            <div className="chat" id="chat">
-                <div className="chat-header">
-                    <div className="chat-header-left">
-                        <span className="arrow" id="arrow" onClick={arrowClickHandler}><BsArrowLeft style={{fontSize:"25px"}}/></span>
-                        <h1 >{props.room.toUpperCase()}</h1>
-                    </div>
-                    <Signout
-                        isAuth={props.isAuth}
-                        signOutUser={props.signOutUser}
-                    />
+        <div className="chat" id="chat">
+            <div className="chat-header">
+                <div className="chat-header-left">
+                    <span className="arrow" id="arrow" onClick={arrowClickHandler}><BsArrowLeft style={{fontSize:"25px"}}/></span>
+                    {props.room && <h1>{props.room.toUpperCase()}</h1>}
                 </div>
-                <div id='scroller' className="message-box">
-                    {messages.map( (message) => (
-                        <div className="single-message" 
-
-                            style={message.uid===auth.currentUser.uid ?
-                                {marginLeft:"auto",borderBottomRightRadius:"0px"}
-                                :{marginRight:"auto",background:'#C2DEDC',borderBottomLeftRadius:"0px"}}>
-
-                            <div className="user">
-                                <img className="userImg" src={message.imageUrl}/>
-                                <span className="username">~ {message.user}</span>
-                            </div>
-                            <div className="text">
-                                { message.text }
-                            </div>
-                            {/* <div className="msg_time" style={{float:"right"}}>
-                            {message.createdAt.toDate().toString().split(" ")[4]}
-                            </div> */}
-                        </div>)
-                    )}
-                </div>
-                <form className='msgform' onSubmit={handleSubmit}>
-                    <input autoFocus placeholder="Type Your Message here..."
-                        onChange={(e)=>{setNewMessage(e.target.value)}}
-                        value={newMessage}
-                        className="msginput"
-                    />
-                    <button type='submit' style={{width:"2.6rem",height:"2.6rem"}}>
-                        <MdSend style={{
-                            height:"30px",
-                            width:"20px"}}/>
-                    </button>
-                </form>
+                <Signout
+                    isAuth={props.isAuth}
+                    signOutUser={props.signOutUser}
+                />
             </div>
+            
+            <div id='scroller' className="message-box">
+                {messages.map( (message) => (
+                    <div className="single-message" 
+
+                        style={message.uid===auth.currentUser.uid ?
+                            {marginLeft:"auto",borderBottomRightRadius:"0px"}
+                            :{marginRight:"auto",background:'#C2DEDC',borderBottomLeftRadius:"0px"}}>
+
+                        <div className="user">
+                            <img className="userImg" src={message.imageUrl}/>
+                            <span className="username">~ {message.user}</span>
+                        </div>
+                        <div className="text">
+                            { message.text }
+                        </div>
+                        {/* <div className="msg_time" style={{float:"right"}}>
+                        {message.createdAt.toDate().toString().split(" ")[4]}
+                        </div> */}
+                    </div>)
+                )}
+            </div>
+            {props.room &&
+            <form className='msgform' onSubmit={handleSubmit}>
+                <input autoFocus placeholder="Type Your Message here..."
+                    onChange={(e)=>{setNewMessage(e.target.value)}}
+                    value={newMessage}
+                    className="msginput"
+                />
+                <button type='submit' style={{width:"2.6rem",height:"2.6rem"}}>
+                    <MdSend style={{
+                        height:"30px",
+                        width:"20px"}}/>
+                </button>
+            </form>}
         </div>
     )
 }

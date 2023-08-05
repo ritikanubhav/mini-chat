@@ -10,7 +10,6 @@
     height:100%;
     display:flex;
     flex-direction:column;
-    justify-content: flex-end;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-left:solid .2px white;
     background-color:white;
@@ -27,6 +26,7 @@
     color:white;
     padding:15px;
     font-size: 12px;
+    user-select: none;
 }
 .message-box{
     display:flex;
@@ -115,6 +115,7 @@
 
 @media only screen and (max-width: 495px) {
     .chat{
+        display:none;
         width: 100vw;
         height: 100vh;
     } 
