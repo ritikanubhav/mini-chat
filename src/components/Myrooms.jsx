@@ -30,10 +30,9 @@ export default function Myrooms(props){
                             }}>
                                 <div className='room-info'>
                                     <BsPeopleFill style={{
-                                        color:"#526D82",
-                                        height:"35px",
-                                        width:"35px",
-                                        border:"solid 2px #526D82",
+                                        color:"rgba(39, 53, 63,0.9)",
+                                        height:"1.6rem",
+                                        width:"1.6rem",
                                         borderRadius:"50%"
                                     }}/>
                                     <h4>{roomValue.roomName}</h4>
