@@ -39,7 +39,7 @@ export default function(props){
     return(
         <form className='room' onSubmit={newRoomHandler}>
             <label htmlFor="room">Enter Room Name:</label>
-            <input id="room" autoFocus type="text" ref={roomInput} placeholder="Room Name"/>
+            <input id="room" type="text" ref={roomInput} placeholder="Room Name"/>
             <button className='roombtn' type='submit'>Create Room</button>
             <button className='roombtn' type='button' onClick={()=>{setNewRoom(false)}}>My Rooms</button>
             <p className="disclaimer">NOTE: If room exists you will enter the chat of that room else a new room will be created.</p>

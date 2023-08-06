@@ -56,6 +56,7 @@ export default function(props){
                 
                 <Chat
                 room={props.room}
+                setRoom={props.setRoom}
                 isAuth={props.isAuth}
                 signOutUser={props.signOutUser}
                 newRoom={props.newRoom}

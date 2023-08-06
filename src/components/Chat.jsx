@@ -61,6 +61,7 @@ export default function Chat(props){
     function arrowClickHandler()
     {
         // console.log("clicked",chat,chatRooms)
+        props.setRoom(null);
         chat.style.display="none";
         chatRooms.style.display="block";
         chatRooms.style.width="100%"   
@@ -102,7 +103,7 @@ export default function Chat(props){
             </div>
             {props.room &&
             <form className='msgform' onSubmit={handleSubmit}>
-                <input autoFocus placeholder="Type Your Message here..."
+                <input placeholder="Type Your Message here..."
                     onChange={(e)=>{setNewMessage(e.target.value)}}
                     value={newMessage}
                     className="msginput"
